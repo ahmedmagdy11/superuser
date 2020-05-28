@@ -27,6 +27,15 @@ router.post('/',async(req,res)=>{
         }
     })
 })
-
+router.delete('/',(req,res)=>{
+    users.remove({},(err)=>{
+        if (!err){
+            res.render('index',{error:false})
+        }
+        else {
+            res.render('index',{error:true})
+        }
+    })
+})
 
 module.exports = router
