@@ -2,9 +2,12 @@ const express = require('express')
 const router = express()
 
 
+router.set('views')
+router.set('view engine', 'ejs');
+
 router.get('/',(req,res)=>{
     
-    res.sendFile(__dirname.replace('routes','views/index.html'))
+    res.render('index')
 })
 
 
