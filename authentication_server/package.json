@@ -1,0 +1,31 @@
+{
+  "name": "superuser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmedmagdy11/superuser.git"
+  },
+  "keywords": [
+    "JWT",
+    "authentication",
+    "authorization"
+  ],
+  "author": "Ahmedmagdy11",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahmedmagdy11/superuser/issues"
+  },
+  "homepage": "https://github.com/ahmedmagdy11/superuser#readme",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  }
+}
