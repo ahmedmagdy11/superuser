@@ -2,11 +2,14 @@ const authenticated =(req,res,next)=>{
     if (req.isAuthenticated()){
         return next()
     }
-    res.redirect('/')
+    res.redirect('/login')
 }
 
-// const notAuthenticated = (req,res,next)=>{
-//     if (req.)
-// }
+function notAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      return res.redirect('/request')
+    }
+    next()
+}
 
-module.exports={authenticated:authenticated}
+module.exports={authenticated:authenticated,notAuthenticated:notAuthenticated}

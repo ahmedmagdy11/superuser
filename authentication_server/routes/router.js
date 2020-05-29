@@ -9,49 +9,81 @@ const session = require('express-session')
 const flash = require('express-flash')
 const users = require('../models/users')
 const initilizePassport = require('../configs/passport-config')
-const authenticated = require('../functions/authentication').authenticated
+const {authenticated,notAuthenticated} = require('../functions/authentication')
 const router = express()
 
 
-const getUser=async(email)=>{
+const getUserByEmail=async(email)=>{
     try{
        const doc =  await users.findOne({email}).exec()
+        console.log(doc)
         return doc
     }catch(err){
         console.log(err)
+        return null
     }
 
 }
-initilizePassport(passport,getUser)
+const getUserByID=async(id)=>{
+    try{
+        
+       const doc =  await users.findById(id).exec() 
+        return doc
+    }catch(err){
+        return null
+    }
+
+}
+initilizePassport(passport,getUserByEmail,getUserByID)
 router.set('views')
 router.set('view engine', 'ejs');
 router.use(flash())
 router.use(session({
-    secret:process.env.SECRET,
+    secret:process.env.SECRET_KEY,
     resave:false,
-    saveUninitialized:false
+    saveUninitialized:false,
+    
 }))
+router.use(passport.initialize())
+router.use(passport.session())
 
 
-router.get('/',(req,res)=>{
+router.post('/login',passport.authenticate('local',{
+    successRedirect:'/request',
+    failureRedirect:'/login',
+    failureFlash:true
+}))
+router.get('/',notAuthenticated,(req,res)=>{
     
     res.render('index',{error:false})
 })
 
-router.post('/',async(req,res)=>{
+router.post('/',notAuthenticated,async(req,res)=>{
+    
+    let value = false
+    
+    if (req.body.superuser){
+        value=true
+    }
     const Data ={
+        username : req.body.user,
         email:req.body.email,
-        password:await bcrypt.hash(req.body.pass,10)
+        password:await bcrypt.hash(req.body.pass,10),
+        superuser:value
+
     }
     users.findOne({email:Data.email},async(err,doc)=>{
         if (doc==null&&!err){
            await users.create(Data)
-           res.send(Data)
+           res.redirect('/login')
         }
         else{
             res.render('index',{error : true})
         }
     })
+})
+router.get('/login',notAuthenticated,(req,res)=>{
+    res.render('login')
 })
 router.delete('/',(req,res)=>{
     users.remove({},(err)=>{

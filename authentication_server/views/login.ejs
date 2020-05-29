@@ -33,19 +33,22 @@
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100 p-t-30 p-b-50">
 				<span class="login100-form-title p-b-41">
-					Account Sign Up
+					Sign in
 				</span>
 				<form action="/" method="POST">
 					<input type="hidden" name="_method" value="DELETE">
-					<button style="background-color:cornflowerblue;text-align: center; margin: 4px 4px 
-					; border-radius: 4px ; font-size:large; color:white; width: 100px; height: 50px;
-					position: absolute; top: 10%; right: 10%;" type="submit">Delete All</button>
-				</form>
-				<form action ="/" method="POST" class="login100-form validate-form p-b-33 p-t-5">
-					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="user" placeholder="Username" required>
-						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					<div >
+						<button title="Delete all users from database" style="background-color:cornflowerblue;text-align: center; margin: 4px 4px 
+						; border-radius: 4px ; font-size:large; color:white; width: 100px; height: 50px;
+						position: absolute; top: 10%; right: 10%;" type="submit">Delete All</button>
+
 					</div>
+					
+					 
+
+				</form>
+				<form action ="/login" method="POST" class="login100-form validate-form p-b-33 p-t-5">
+				
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter email">
 						<input class="input100" type="text" name="email" placeholder="Ex: johnDoe@gmail.com" required>
@@ -53,19 +56,13 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="****" required>
+						<input class="input100" type="password" name="password" placeholder="****" required>
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
 					</div>
-					
-					<input style="position:relative; left: 10%; top:2px;" type="checkbox" id="superuser" name="superuser"  checked>
-					<p style="position: relative; left:17%; top:-27px; font-size: large; color: darkgreen;">superuser</p><br>
-					<% if (error){ %>
-						<p style="color: red;"> something went wrong</p>
-						<% } %>
-						<a href="/login" style="position:absolute; left:45%; color:cornflowerblue;" >have an account sign in</a>
+				
 					<div class="container-login100-form-btn m-t-32">
 						<button class="login100-form-btn">
-							Create Account
+							login
 						</button>
 					</div>
 

@@ -475,5 +475,19 @@ iframe {
   }
 }
 
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color:white;
+  color:black;
+  text-align: center;
+ 
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
 
 
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
