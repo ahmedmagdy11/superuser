@@ -1,11 +1,37 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+  }
+  
 const express = require('express')
-const users = require('../models/users')
 const bcrypt = require('bcrypt')
+const passport = require('passport')
+const session = require('express-session')
+const flash = require('express-flash')
+const users = require('../models/users')
+const initilizePassport = require('../configs/passport-config')
+const authenticated = require('../functions/authentication').authenticated
 const router = express()
 
 
+const getUser=async(email)=>{
+    try{
+       const doc =  await users.findOne({email}).exec()
+        return doc
+    }catch(err){
+        console.log(err)
+    }
+
+}
+initilizePassport(passport,getUser)
 router.set('views')
 router.set('view engine', 'ejs');
+router.use(flash())
+router.use(session({
+    secret:process.env.SECRET,
+    resave:false,
+    saveUninitialized:false
+}))
+
 
 router.get('/',(req,res)=>{
     
