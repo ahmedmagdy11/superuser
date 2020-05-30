@@ -8,6 +8,7 @@ const passport = require('passport')
 const session = require('express-session')
 const flash = require('express-flash')
 const users = require('../models/users')
+const requestRouter = require('./requestRouter')
 const initilizePassport = require('../configs/passport-config')
 const {authenticated,notAuthenticated} = require('../functions/authentication')
 const router = express()
@@ -16,7 +17,6 @@ const router = express()
 const getUserByEmail=async(email)=>{
     try{
        const doc =  await users.findOne({email}).exec()
-        console.log(doc)
         return doc
     }catch(err){
         console.log(err)
@@ -46,7 +46,7 @@ router.use(session({
 }))
 router.use(passport.initialize())
 router.use(passport.session())
-
+router.use(requestRouter)
 
 router.post('/login',passport.authenticate('local',{
     successRedirect:'/request',

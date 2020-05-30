@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Sign Up</title>
+	<title>make requests</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="images/icon.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -27,48 +27,28 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 </head>
-<body>
+<body style="height: 100%;">
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100 p-t-30 p-b-50">
-				<span class="login100-form-title p-b-41">
-					Sign in
-				</span>
-				<form action="/" method="POST">
-					<input type="hidden" name="_method" value="DELETE">
-					<div >
-						<button title="Delete all users from database" style="background-color:cornflowerblue;text-align: center; margin: 4px 4px 
-						; border-radius: 4px ; font-size:large; color:white; width: 100px; height: 50px;
-						position: absolute; top: 10%; right: 10%;" type="submit">Delete All</button>
 
-					</div>
-					
-					 
 
-				</form>
-				<form action ="/login" method="POST" class="login100-form validate-form p-b-33 p-t-5">
+				<div  class="div-form  p-b-33 p-t-5">
 				
+                    <a href="localhost:4000/api/superOnly">api/superUserOnly</a>
+                    <button style="left: 250px; position:absolute;" class="btn btn-success btn-pos" >make request</button> 
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <a href="localhost:4000/api/anyUser">api/anyUser</a>
+                    <button style="left: 250px; position:absolute;"  class="btn btn-success btn-pos" >make request</button> 
+                    
+                    
 
-					<div class="wrap-input100 validate-input" data-validate = "Enter email">
-						<input class="input100" type="text" name="email" placeholder="Ex: johnDoe@gmail.com" required>
-						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="password" placeholder="****" required>
-						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
-					</div>
-					
-
-					<div class="container-login100-form-btn m-t-32">
-						<button class="login100-form-btn">
-							login
-						</button>
-					</div>
-					<a href="/" style="position:absolute; left:740px; color:cornflowerblue;" >register</a>
-
-				</form>
+                </div>
 			</div>
 		</div>
 	</div>

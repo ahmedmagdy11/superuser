@@ -186,8 +186,16 @@ iframe {
 
   background: transparent;
 }
+/*------------------------------------------------------------------
+[ div ]*/
 
-
+.div-form {
+  width: 500px;
+  height: 300px;
+  position: relative;
+  border-radius: 10px;
+  background-color: #fff;
+}
 /*------------------------------------------------------------------
 [ Form ]*/
 
@@ -331,7 +339,9 @@ iframe {
   padding-left: 60px;
 }
 
-
+.btn-pos{
+  left: 20%;
+}
 /*------------------------------------------------------------------
 [ Button ]*/
 .container-login100-form-btn {
