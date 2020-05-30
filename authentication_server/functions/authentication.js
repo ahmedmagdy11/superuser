@@ -3,7 +3,7 @@ const authenticated =(req,res,next)=>{
         return next()
     }
     res.redirect('/login')
-}
+}   
 
 function notAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
