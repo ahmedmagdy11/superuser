@@ -4,8 +4,8 @@ const token = require('../models/tokens')
 
 const getCookieByName =(cookies,name)=>{
     const arrOfCookies = cookies.split(' ')
-    console.log(arrOfCookies)
     let yourCookie = null
+    // console.log(arrOfCookies)
     arrOfCookies.forEach(element => {
         if(element.includes(name)){
             yourCookie = element.replace(name+'=','')
@@ -28,7 +28,7 @@ function notAuthenticated(req, res, next) {
 }
 const generateToken=(email)=>{
     
-    const AccessToken = jwt.sign({email:email},process.env.ACCESSTOKEN_SECRET,{expiresIn:"100s"})
+    const AccessToken = jwt.sign({email:email},process.env.ACCESSTOKEN_SECRET,{expiresIn:"10s"})
     
     const RefreshToken = jwt.sign({email:email},process.env.REFRESH_TOKEN)
     token.create({refreshToken:RefreshToken})

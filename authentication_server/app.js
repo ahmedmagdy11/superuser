@@ -1,6 +1,7 @@
 const express = require('express')
 const router = require('./routes/router')
 const mongoose = require('mongoose')
+const cors = require('cors')
 const methodOverride = require('method-override')
 const generateKey = require('./functions/GenerateSecretKey')
 
@@ -13,7 +14,7 @@ mongoose.connect('mongodb://localhost:27017/superuser', {useNewUrlParser: true, 
     console.log(err);
 });
 generateKey()
-
+app.use(cors({credentials:true}))
 app.use(express.static(__dirname+'/views'))
 app.use(express.urlencoded({extended:false}));
 app.use(methodOverride(function (req, res) {

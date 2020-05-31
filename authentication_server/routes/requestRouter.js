@@ -9,24 +9,28 @@ router.get('/request',authenticated,(req,res)=>{
     res.render('requests')
 })
 
-router.get('/generateToken',authenticated,(req,res)=>{
-//    const {AccessToken,RefreshToken} =  generateToken(req.user.email)
-//    console.log(getCookieByName('refreshToken'))
-//    if (getCookieByName('refreshToken')==null){
+router.get('/generateToken',authenticated,async(req,res)=>{
+    console.log("request here")
+    const refreshToken = getCookieByName(req.headers.cookie,'refreshToken').replace(';','')
+    let doc = null
+    try{
+         doc = await token.findOne({'refreshToken':refreshToken}).exec()
+    }catch(err){
+       return res.sendStatus(500).send("something wrong happend")
+    }
+    jwt.verify(refreshToken,process.env.REFRESH_TOKEN,(err,user)=>{
+        if (err||doc==null){
+           res.sendStatus(403)
 
-//     res.cookie('refreshToken',RefreshToken,{httpOnly:true,sameSite:true}) 
-//     console.log(getCookieByName('refreshToken'))
-//    return  res.send({AccessToken:AccessToken})
-   
-//    }
-//    return res.send(null)
-  
+        }
+           
+            const accessToken = jwt.sign({email :req.email},process.env.ACCESSTOKEN_SECRET,{expiresIn:'10s'})
+            res.cookie('JWT',accessToken,{sameSite:true})
+            return res.sendStatus(200)
+        
+    })
+
 })
-router.post('/generateToken',authenticated,(req,res)=>{
-    // let Cookie = getCookieByName(req.headers.cookie,'refreshToken')
-    // console.log(Cookie)
-    // res.send(Cookie)
- })
 
 
 module.exports=router 
