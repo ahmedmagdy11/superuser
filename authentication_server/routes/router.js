@@ -11,6 +11,7 @@ const users = require('../models/users')
 const requestRouter = require('./requestRouter')
 const initilizePassport = require('../configs/passport-config')
 const {authenticated,notAuthenticated} = require('../functions/authentication')
+const generateToken = require('../functions/authentication').generateToken
 const router = express()
 
 
@@ -49,10 +50,14 @@ router.use(passport.session())
 router.use(requestRouter)
 
 router.post('/login',passport.authenticate('local',{
-    successRedirect:'/request',
     failureRedirect:'/login',
     failureFlash:true
-}))
+}),(req,res)=>{
+    const {AccessToken,RefreshToken} =  generateToken(req.user.email)
+    res.cookie('JWT',AccessToken,{sameSite:true})
+    res.cookie('refreshToken',RefreshToken,{httpOnly:true,sameSite:true}) 
+    res.redirect('/request')
+})
 router.get('/',notAuthenticated,(req,res)=>{
     
     res.render('index',{error:false})
