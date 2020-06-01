@@ -54,7 +54,8 @@ router.post('/login',passport.authenticate('local',{
     failureRedirect:'/login',
     failureFlash:true
 }),(req,res)=>{
-    const {AccessToken,RefreshToken} =  generateToken(req.user.email)
+
+    const {AccessToken,RefreshToken} =  generateToken(req.user.email,req.user.type)
     res.cookie('JWT',AccessToken,{sameSite:true})
     res.cookie('refreshToken',RefreshToken,{httpOnly:true,sameSite:true}) 
     res.redirect('/request')
@@ -75,9 +76,10 @@ router.post('/',notAuthenticated,async(req,res)=>{
         username : req.body.user,
         email:req.body.email,
         password:await bcrypt.hash(req.body.pass,10),
-        superuser:value
+        type:value
 
     }
+    
     users.findOne({email:Data.email},async(err,doc)=>{
         if (doc==null&&!err){
            await users.create(Data)
@@ -106,9 +108,7 @@ router.delete('/logout',authenticated,async(req,res)=>{
     await token.deleteOne({'refreshToken':cookie}).exec()
     req.logOut()
     
-    res.cookie('refreshToken',null)
-    res.cookie('JWT',null)
-    console.log(req.headers.cookie)
+    console.log("logged out ")
     res.redirect('/login')
 })
 module.exports = router

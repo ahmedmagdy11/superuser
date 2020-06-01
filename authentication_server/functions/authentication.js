@@ -26,15 +26,23 @@ function notAuthenticated(req, res, next) {
     }
     next()
 }
-const generateToken=(email)=>{
+const generateToken=(email,flag)=>{
+    let AccessToken = null
     
-    const AccessToken = jwt.sign({email:email},process.env.ACCESSTOKEN_SECRET,{expiresIn:"10s"})
+    if (flag){
+         AccessToken = jwt.sign({email:email},process.env.ACCESSTOKEN_SECRET_SUPER,{expiresIn:"10s"})
     
+    }
+    else {
+        
+         AccessToken = jwt.sign({email:email},process.env.ACCESSTOKEN_SECRET_NORMAL,{expiresIn:"10s"})
+    }
+    
+  
     const RefreshToken = jwt.sign({email:email},process.env.REFRESH_TOKEN)
     token.create({refreshToken:RefreshToken})
   
     return {AccessToken: AccessToken,RefreshToken :RefreshToken}
-  
   }
 module.exports={
     authenticated:authenticated,

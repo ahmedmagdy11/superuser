@@ -10,7 +10,31 @@ router.get('/request',authenticated,(req,res)=>{
 })
 
 router.get('/generateToken',authenticated,async(req,res)=>{
-    console.log("request here")
+    
+    //Check if the original JWT is Still Valid 
+
+    let valueOFErrorSuper = null
+    let valueOFErrorNormal = null
+    jwt.verify(token,process.env.ACCESSTOKEN_SECRET_SUPER,(err,user)=>{
+        if (err){
+            valueOFErrorSuper=true
+           
+        }
+        
+    })
+    jwt.verify(token,process.env.ACCESSTOKEN_SECRET_NORMAL,(err,user)=>{
+        if (err){
+            valueOFErrorNormal=true
+           
+        }
+        
+    })
+    
+    if (valueOFErrorSuper==null&&valueOFErrorNormal==null){
+        return res.sendStatus(200)
+    }
+
+    //////////////////
     const refreshToken = getCookieByName(req.headers.cookie,'refreshToken').replace(';','')
     let doc = null
     try{
@@ -23,8 +47,11 @@ router.get('/generateToken',authenticated,async(req,res)=>{
            res.sendStatus(403)
 
         }
-           
-            const accessToken = jwt.sign({email :req.email},process.env.ACCESSTOKEN_SECRET,{expiresIn:'10s'})
+            let TokenSECRET =process.env.ACCESSTOKEN_SECRET_SUPER
+            if (req.user.type==false){
+                TokenSECRET =process.env.ACCESSTOKEN_SECRET_NORMAL
+            }
+            const accessToken = jwt.sign({email :req.email},TokenSECRET,{expiresIn:'100s'})
             res.cookie('JWT',accessToken,{sameSite:true})
             return res.sendStatus(200)
         

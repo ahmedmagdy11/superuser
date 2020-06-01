@@ -1,13 +1,17 @@
 require('dotenv').config()
 
 const express = require('express')
-const AuthenticateToken = require('./functions/Authentication')
+const {AuthenticateTokenSUPER,AuthenticateTokenAnyUser} = require('./functions/Authentication')
 const cors = require('cors')
 const app = express()
 app.use(cors())
-app.get('/api/superOnly',AuthenticateToken,(req,res)=>{
+app.get('/api/superOnly',AuthenticateTokenSUPER,(req,res)=>{
     console.log('request was made')
-    res.send({"success":1})
+    res.sendStatus(200)
+})
+app.get('/api/anyUser',AuthenticateTokenAnyUser,(req,res)=>{
+    console.log('request was made')
+    res.sendStatus(200)
 })
 
 

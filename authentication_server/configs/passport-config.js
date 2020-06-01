@@ -7,7 +7,6 @@ const initialize =(passport,GetUserByEmail,GetUserByID)=>{
     const authenticateUser =async(email,password,done)=>{
     
     const user = await GetUserByEmail(email)
-    
    try{
     if (user==null){
         done(null,false,{message:"user doesn't exist"})
