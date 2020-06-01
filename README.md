@@ -26,12 +26,12 @@ by default the authentication server runs on port 3000 and Data provider server 
 after both of npm installtions are over run `npm start` in each of both directories
 after going to localhost:3000 
 create 2 account 1 superuser and the other will be normal if you don't have the checkbox marked
-![]('images/signUp')
+![](images/signUp.png)
 and you will be redirected to login page after each sign up 
 if you make request with superuser you should get this result 
-![]('images/normal_request')
+![](images/superuse_request.png)
 and if you make request with normal user you should get this result
-
+![](images/normal_request.png)
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
