@@ -15,11 +15,11 @@ superuser allowed is authorized to make any request they want but normal user is
 make sure to have mongoDB installed on your pc. 
 
 after cloning the project.
--open terminal write `cd authentication_server`.
--`npm install`.
--open another terminal on the same directory (superuser/).
--`cd  dataProvider` .
--`npm install` .
+open terminal write `cd authentication_server`.
+`npm install`.
+open another terminal on the same directory (superuser/).
+`cd  dataProvider.
+`npm install.
 
 by default the authentication server runs on port 3000 and Data provider server runs on 4000 .
 ## How to Use
