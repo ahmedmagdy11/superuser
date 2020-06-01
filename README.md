@@ -4,7 +4,7 @@ superuser is a project I built to show JWT (authorization) in action on two sepa
 
 ## Description
 
-superuser is a project to show how  1 server can be used for authentication using Passport.js localStrategey and then generateing a JWT for that user when they have logged in.
+superuser is a project to show how  1 server can be used for authentication using Passport.js localStrategey and then generateing a JWT for that user so they can communicate with other servers inside the app.
 
 each user have the ability to make request to certain API's on running separate server (dataProvider).
 
@@ -14,14 +14,14 @@ superuser allowed is authorized to make any request they want but normal user is
 
 make sure to have mongoDB installed on your pc. 
 
-after cloning the project.
-open terminal write `cd authentication_server`.
-`npm install`.
-open another terminal on the same directory (superuser/).
-`cd  dataProvider.
-`npm install.
+after cloning the project <br />
+-open terminal write `cd authentication_server`<br>
+-`npm install` <br />
+-open another terminal on the same directory (superuser/)<br />
+-`cd  dataProvider_server`<br />
+-`npm install`<br />
 
-by default the authentication server runs on port 3000 and Data provider server runs on 4000 .
+by default the authentication server runs on port 3000 and Data provider server runs on 4000
 ## How to Use
 after both of npm installtions are over run `npm start` in each of both directories.
 after going to localhost:3000.
