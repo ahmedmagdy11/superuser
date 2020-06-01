@@ -29,7 +29,7 @@ create 2 account 1 superuser and the other will be normal if you don't have the 
 ![](images/signUp.png)
 and you will be redirected to login page after each sign up 
 if you make request with superuser you should get this result 
-![](images/superuse_request.png)
+![](images/superuser_request.png)
 and if you make request with normal user you should get this result
 ![](images/normal_request.png)
 ## Contributing
