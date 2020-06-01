@@ -1,12 +1,12 @@
 # superuser
 
-superuser is a project I built to show JWT (authorization) in action on 2 sperate servers.
+superuser is a project I built to show JWT (authorization) in action on two separate servers.
 
 ## Description
 
 superuser is a project to show how  1 server can be used for authentication using Passport.js localStrategey and then generateing a JWT for that user when they have logged in.
 
-each user have the ability to make request to certain Api's on running seperate server (dataProvider).
+each user have the ability to make request to certain API's on running separate server (dataProvider).
 
 superuser allowed is authorized to make any request they want but normal user is limited to only 1 api.
 
