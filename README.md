@@ -24,14 +24,25 @@ after cloning the project
 by default the authentication server runs on port 3000 and Data provider server runs on 4000  
 ## How to Use
 after both of npm installtions are over run `npm start` in each of both directories
-after going to localhost:3000 
-create 2 account 1 superuser and the other will be normal if you don't have the checkbox marked
-![](images/signUp.png)
+after going to localhost:3000.
+create 2 accounts one of superuser and the other will be normal if you don't have the checkbox marked 
+[check sign up page](#sign-up-page)
 and you will be redirected to login page after each sign up 
-if you make request with superuser you should get this result 
+
+if you make request with superuser you should get this [result](#superuser-result) 
+and if you make request with normal user you should get this [result](#normal-user-result)
+
+
+## Results 
+## Sign up page
+![](images/signUp.png)
+
+## superuser result 
 ![](images/superuser_request.png)
-and if you make request with normal user you should get this result
+
+## normal user result 
 ![](images/normal_request.png)
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
