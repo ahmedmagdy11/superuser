@@ -29,13 +29,25 @@
 </head>
 <body style="height: 100%;">
 	
+		 
+
+	</form>
+
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100 p-t-30 p-b-50">
-
+				<form action="/logout" method="POST">
+					<input type="hidden" name="_method" value="DELETE">
+					<div >
+						<button title="logout" style="background-color:cornflowerblue;text-align: center; margin: 4px 4px 
+						; border-radius: 4px ; font-size:large; color:white; width: 100px; height: 50px;
+						position: absolute; top:10%; right: 10%;" type="submit">Logout</button>
+			
+					</div>
+					
 
 				<div  class="div-form  p-b-33 p-t-5">
-				
+					
                     <a href="localhost:4000/api/superOnly">api/superUserOnly</a>
                     <button style="left: 250px; position:absolute;" class="btn btn-success btn-pos" id ="superOnly">make request</button> 
 					<br>

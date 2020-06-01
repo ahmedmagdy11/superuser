@@ -8,9 +8,10 @@ const passport = require('passport')
 const session = require('express-session')
 const flash = require('express-flash')
 const users = require('../models/users')
+const token = require('../models/tokens')
 const requestRouter = require('./requestRouter')
 const initilizePassport = require('../configs/passport-config')
-const {authenticated,notAuthenticated} = require('../functions/authentication')
+const {authenticated,notAuthenticated,getCookieByName} = require('../functions/authentication')
 const generateToken = require('../functions/authentication').generateToken
 const router = express()
 
@@ -100,5 +101,14 @@ router.delete('/',(req,res)=>{
         }
     })
 })
-
+router.delete('/logout',authenticated,async(req,res)=>{
+    let cookie = getCookieByName(req.headers.cookie,'refreshToken').replace(';','')
+    await token.deleteOne({'refreshToken':cookie}).exec()
+    req.logOut()
+    
+    res.cookie('refreshToken',null)
+    res.cookie('JWT',null)
+    console.log(req.headers.cookie)
+    res.redirect('/login')
+})
 module.exports = router
