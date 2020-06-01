@@ -12,25 +12,24 @@ superuser allowed is authorized to make any request they want but normal user is
 
 ## How to Run
 
-make sure to have mongoDB installed on your pc 
+make sure to have mongoDB installed on your pc. 
 
-after cloning the project 
--open terminal write `cd authentication_server`
--`npm install` 
--open another terminal on the same directory (superuser/)
--`cd  dataProvider` 
--`npm install` 
+after cloning the project.
+-open terminal write `cd authentication_server`.
+-`npm install`.
+-open another terminal on the same directory (superuser/).
+-`cd  dataProvider` .
+-`npm install` .
 
-by default the authentication server runs on port 3000 and Data provider server runs on 4000  
+by default the authentication server runs on port 3000 and Data provider server runs on 4000 .
 ## How to Use
-after both of npm installtions are over run `npm start` in each of both directories
+after both of npm installtions are over run `npm start` in each of both directories.
 after going to localhost:3000.
 create 2 accounts one of superuser and the other will be normal if you don't have the checkbox marked 
-[check sign up page](#sign-up-page)
-and you will be redirected to login page after each sign up 
+[check sign up page](#sign-up-page) and you will be redirected to login page after each sign up.
 
-if you make request with superuser you should get this [result](#superuser-result) 
-and if you make request with normal user you should get this [result](#normal-user-result)
+if you make request with superuser you should get this [result](#superuser-result).
+and if you make request with normal user you should get this [result](#normal-user-result).
 
 
 ## Results 
